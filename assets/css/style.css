@@ -1,0 +1,54 @@
+#name1 {
+/*   width: 25px; */
+}
+.outline {
+  border: 1px black solid;
+  margin: auto;
+  max-width: 900px;
+  text-align: center;
+}
+h1 {
+  text-align: center;
+}
+#box1 {
+  background-color: red;
+  width: 350px;
+  position: absolute;
+  top: 0;
+  border: 1px black solid;
+  margin: auto;
+  max-width: 900px;
+  height: 100px;
+}
+#box2 {
+  background-color: blue;
+  width: 35px;
+  left: 350px;
+  top: 0;
+  position: absolute;
+  border: 1px black solid;
+  margin: auto;
+  max-width: 900px;
+  height: 100px;
+}
+.inner-outline {
+  border: 1px black solid;
+  margin: auto;
+  margin-bottom: 15px;
+  max-width: 700px;
+/*   text-align: center; */
+  background-color: green;
+  color: white;
+  height: 100px;
+  position: relative;
+}
+table {
+  margin: auto;
+
+}
+th, td {
+  padding: 5px
+}
+table {
+  max-width: 700px;
+}
