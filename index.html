@@ -17,7 +17,7 @@
 
 
     <!-- Navbar Begin -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top hide">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -58,64 +58,49 @@
     <!-- Navbar End -->
 
 
-<div class='outline'><h1>Account 1</h1>
+    <div class='outline'>
+        <h1>Account 1</h1>
+        <form> 
+            <input type="text" id="account-value" placeholder="Account Value: $">
+            <input type="submit" value="Submit" id='accountSubmit' class='btn'>
+        </form>
+        <div class='outline' id='prompt1'></div>
+        <div class='inner-outline' id='graph1'>
+            <span id='display-value'>$100</span>
+        </div>
+    </div>
 
-  <div class='inner-outline' id='graph1'>
-    $100
-<!--     <div id='box1'>
-      <p>Name: box1</p>
-      <p>Value: $35</p>
-    </div> -->
-<!--     <div id='box2'>
-      <p>Name: box2</p>
-      <p>Value: $15</p>
-    </div> -->
-  </div>
-</div>
-
-<div class='outline'><h1>Box 2</h1><p>use this box to list the different partitions and what they are for. be able to remove one. lastly include a for to fill this all out</p>
-<!--   <div class='btn btn-default' id='btn1'>click me</div>
+    <div class='outline'>
+        <h1>Box 2</h1>
+        <p>use this box to list the different partitions and what they are for. be able to remove one. lastly include a for
+            to fill this all out</p>
+        <!--   <div class='btn btn-default' id='btn1'>click me</div>
   <div class='btn btn-default' id='btn1'>click me</div>
   <div class='btn btn-default' id='btn1'>click me</div>
   <div class='btn btn-default' id='btn1'>click me</div> -->
-  <form>
-  <input type="text" name="name" placeholder='Type Name Here' id='name1'>
-  <input type="text" name="value" placeholder='Place $ Value Here' id='value1'>
-  <input type="submit" value="Submit" id='formSubmit'class='btn'>
-</form>
-  <div class='outline' id='prompt'></div>
-  <table id='account1-table'>
-    <tr>
-    <th>#</th>
-    <th>Name</th>
-    <th>$ Value</th>
-    </tr>
-  </table>
-</div>
+        <form>
+            <input type="text" name="name" placeholder='Type Name Here' id='name1'>
+            <input type="text" name="value" placeholder='Place $ Value Here' id='value1'>
+            <input type="submit" value="Submit" id='formSubmit' class='btn'>
+        </form>
+        <div class='outline' id='prompt'></div>
+        <table id='account1-table'>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>$ Value</th>
+                <!-- <th>+ -</th> -->
+            </tr>
+        </table>
+    </div>
 
-<!-- <div class='container'>container</div> -->
+    
 
-    <footer class="footer">
-        <div class="container">
-            <p>Choose your Theme!</p>
-
-
-                    <!-- Boxes for CSS Styling Feature -->
-                    <div class="box" id="box1"></div>
-                    <div class="box" id="box2"></div>
-                    <div class="box" id="box3"></div>
-                    <div class="box" id="box4"></div>
-
-
-        </div>
-    </footer>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
+    <!-- Bootstrap core JavaScript -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
-     <script src="assets/js/app.js"></script>
+    <script src="assets/js/app.js"></script>
 
 </body>
 
