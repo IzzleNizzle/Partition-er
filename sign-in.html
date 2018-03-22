@@ -31,8 +31,8 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="#">Home</a>
+                    <li>
+                        <a href="index.html">Home</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -50,47 +50,38 @@
     <!-- Navbar End -->
 
 
-    <div class='outline'>
-        <h1>Account 1</h1>
-        <form>
-            <input type="text" id="account-value" placeholder="Account Value: $">
-            <input type="submit" value="Submit" id='accountSubmit' class='btn'>
-        </form>
-        <div class='outline' id='prompt1'></div>
-        <div class='inner-outline' id='graph1'>
-            <span id='display-value'>$100</span>
-        </div>
-    </div>
+    <div class="container">
+        <div class="row" id='secondRow'>
+            <div class="col-md-6">
 
-    <div class='outline'>
-        <h1>Box 2</h1>
-        <p>use this box to list the different partitions and what they are for. be able to remove one. lastly include a for
-            to fill this all out</p>
-        <!--   <div class='btn btn-default' id='btn1'>click me</div>
-  <div class='btn btn-default' id='btn1'>click me</div>
-  <div class='btn btn-default' id='btn1'>click me</div>
-  <div class='btn btn-default' id='btn1'>click me</div> -->
-        <form>
-            <input type="text" name="name" placeholder='Type Name Here' id='name1'>
-            <input type="text" name="value" placeholder='Place $ Value Here' id='value1'>
-            <input type="submit" value="Submit" id='formSubmit' class='btn'>
-        </form>
-        <div class='outline' id='prompt'></div>
-        <table id='account1-table'>
-            <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>$ Value</th>
-                <!-- <th>+ -</th> -->
-            </tr>
-        </table>
+                <input type="email" id="txtEmail" placeholder="Email">
+
+                <input type="password" id="txtPassword" placeholder="Password">
+
+                <button class="btn btn-action" id="btnLogin">
+                    Log in
+                </button>
+
+                <button class="btn btn-secondary" id="btnSignUp">
+                    Sign Up
+                </button>
+
+                <button class="btn btn-action hide" id="btnLogOut">
+                    Log out
+                </button>
+
+            </div>
+
+            <div class="col-md-6">Sign in to be able to have constant data!</div>
+        </div>
     </div>
 
 
     <!-- Adding google's firebase -->
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-    <!-- Bootstrap core JavaScript -->
+    <!-- jQuery CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/app.js"></script>
 

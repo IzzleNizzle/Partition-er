@@ -1,3 +1,17 @@
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyBtCHKccoBrNgyRld2RJRIm2VecSPXV_gg",
+  authDomain: "iz-partitioner.firebaseapp.com",
+  databaseURL: "https://iz-partitioner.firebaseio.com",
+  projectId: "iz-partitioner",
+  storageBucket: "iz-partitioner.appspot.com",
+  messagingSenderId: "259789703509"
+};
+firebase.initializeApp(config);
+//shortcut reference for firebase database
+var db = firebase.database();
+
+
 //Global Local variables
 
 //used for counting table data
@@ -8,9 +22,7 @@ var color = ["blue", "purple", "red", "orange", "yellow"];
 var leftValue = 0;
 // Account 1 value
 var acct1Value = 100;
-
-
-
+var valueTotal = 0;
 
 
 
@@ -20,7 +32,7 @@ $("#accountSubmit").on("click", function () {
 
   // capture user input value
   acct1Value = parseFloat($("#account-value").val().trim());
-  
+
   // Preventing input of values other than numbers
   if (isNaN(acct1Value)) {
     $("#prompt1").text("Invalid input")
@@ -33,11 +45,7 @@ $("#accountSubmit").on("click", function () {
 
   }
 
-
-
 });
-
-
 
 
 
@@ -48,88 +56,174 @@ $("#formSubmit").on("click", function () {
   //gather inputs from form
   var name = $("#name1").val().trim();
   var value = parseFloat($("#value1").val().trim());
+  // keeps tally of all the values
+  valueTotal += value;
 
-  // ::MAJOR LOGIC:: if valid input then create box for it
-  if (name === "" && isNaN(value)) {
-    $("#prompt").text("Invalid input");
+  // if you entered a value that is more than what is available, don't run code
+  if (valueTotal > acct1Value) {
+    // send error message
+    $("#prompt").text("You have exceeded the account Balance.");
+    // revert value so it can be re calculated
+    valueTotal -= value;
   } else {
 
-    // clear prompt screen if there is anyting there
-    $("#prompt").empty();
+    // ::MAJOR LOGIC:: if valid input then create box for it
+    if (name === "" && isNaN(value)) {
+      $("#prompt").text("Invalid input");
+    } else {
 
-    // ****** creating box for visual ********
+      // clear prompt screen if there is anyting there
+      $("#prompt").empty();
 
-    var box = $("<div>");
-    // giving box properties of other boxes
-    box.attr("id", "box1");
-    // inserting text into box
-    box.html("<p>Name: " + name + "</p><p>Value: " + value + "</p>");
-    // sizing box
-    box.css("width", (value/acct1Value * 100) + "%");
-    
-    
-    
+      // ****** creating box for visual ********
 
+      var box = $("<div>");
+      // giving box properties of other boxes
+      box.attr("id", "box1");
+      // inserting text into box
+      box.html("<p>Name: " + name + "</p><p>Value: " + value + "</p>");
+      // sizing box
+      box.css("width", (value / acct1Value * 100) + "%");
 
+      // first find percentage of input to 
+      box.css("left", leftValue);
+      // setting background color
+      box.css("background-color", color[Math.floor(Math.random() * color.length)]);
 
+      // figure out percentage of 700px div
+      var perc = (value / acct1Value);
 
+      // find magic number from percentage of 700
+      // use case - 25 - what is 25 percent of 700
+      var magicNumber = 700 * perc;
+      leftValue += magicNumber;
 
+      // console.log(value, leftValue);
+      $("#graph1").append(box);
 
-
-
-    // first find percentage of input to 
-    box.css("left", leftValue);
-    // setting background color
-    box.css("background-color", color[Math.floor(Math.random() * color.length)]);
-
-    // left offset will need to be the same percentage of the acct1value but to the 700px div and added to the leftValue variable
-
-    // adding value to left value
-    
-    // figure out percentage of 700px div
-    var perc = (value/acct1Value);
-
-    // find magic number from percentage of 700
-    // use case - 25 - what is 25 percent of 700
-    var magicNumber = 700*perc;
-
-    leftValue += magicNumber;
+      // ****** END creating box for visual ********
 
 
 
-    // console.log(value, leftValue);
-    $("#graph1").append(box);
+      // ****** creating table data entry for box ********
 
-    // ****** END creating box for visual ********
+      // creating variables for html elements
+      var tableRow = $("<tr>");
+      var tableEntryNumber = $("<td>");
+      var tableEntryName = $("<td>");
+      var tableEntryValue = $("<td>");
 
+      // assigning appropriate variables to html elements
 
-    // ****** creating table data entry for box ********
+      tableEntryName.text(name);
+      tableEntryValue.text(value);
+      tableEntryNumber.text(boxCount);
+      // incrementing boxCount variable
+      boxCount++
 
-    // creating variables for html elements
-    var tableRow = $("<tr>");
-    var tableEntryNumber = $("<td>");
-    var tableEntryName = $("<td>");
-    var tableEntryValue = $("<td>");
+      // appending variables together 
 
-    // assigning appropriate variables to html elements
+      tableRow.append(tableEntryNumber);
+      tableRow.append(tableEntryName);
+      tableRow.append(tableEntryValue);
 
-    tableEntryName.text(name);
-    tableEntryValue.text(value);
-    tableEntryNumber.text(boxCount);
-    // incrementing boxCount variable
-    boxCount++
+      // append tableRow to page
+      $("#account1-table").append(tableRow);
 
-    // appending variables together 
-
-    tableRow.append(tableEntryNumber);
-    tableRow.append(tableEntryName);
-    tableRow.append(tableEntryValue);
-
-    // append tableRow to page
-    $("#account1-table").append(tableRow);
-
-    // ****** ENDcreating table data entry for box ********
+      // ****** ENDcreating table data entry for box ********
 
 
-  }//end if-else statement
+    }//end if-else statement 
+
+  }
+
+
+
 });
+
+
+// Variables with user authentication
+const auth = firebase.auth();
+auth.onAuthStateChanged(firebaseUser => { });
+var logOut = document.getElementById("btnLogOut");
+
+// **************************** USER AUTHENTICATION ********************************
+
+
+// Get Elements
+var txtEmail;
+var txtPassword;
+var user;
+
+
+// Add login event
+$("#btnLogin").on("click", function () {
+
+  // Get email and pass
+  txtEmail = $("#txtEmail").val();
+  txtPassword = $("#txtPassword").val();
+  // Sign in 
+  const promise = auth.signInWithEmailAndPassword(txtEmail, txtPassword);
+  promise.catch(e => console.log(e.message));
+})
+
+// Add Sign up event
+$("#btnSignUp").on("click", function () {
+  // Get email and pass
+  txtEmail = $("#txtEmail").val().trim();
+  txtPassword = $("#txtPassword").val().trim();
+  // Sign up 
+  const promise = auth.createUserWithEmailAndPassword(txtEmail, txtPassword);
+  promise.catch(e => console.log(e.message));
+})
+
+
+
+// Add Sign out event
+$("#btnLogOut").on("click", function () {
+  // Sign out 
+  firebase.auth().signOut();
+  console.log("test");
+});
+
+
+// Add a reatime listener
+firebase.auth().onAuthStateChanged(firebaseUser => {
+  if (firebaseUser) {
+    user = firebaseUser;
+    console.log(firebaseUser)
+    console.log("is this working?")
+    console.log(firebaseUser.email)
+    console.log(firebaseUser.uid)
+    // console.log(firebaseUser.Kb.I)
+    logOut.classList.remove("hide");
+    $("#userName").text("Hi " + firebaseUser.email + "!");
+  } else {
+    console.log('not logged in');
+    console.log(firebaseUser)
+    logOut.classList.add("hide");
+    $("#userName").html("<a href='sign-in.html'>Hi! Click to Log In</a>");
+  }
+});
+
+
+// **************************** END USER AUTHENTICATION ********************************
+
+
+
+// playing with firebase database handling
+
+$("#accountSubmit").on("click", function (){
+
+  if (user.uid === null){
+    console.log("noone is logged in to store data for");
+  } else {
+    // db.ref().set('');
+    db.ref("users/" + user.uid + "/testfolder").set('movieChoices')
+    db.ref("users/" + user.uid + "/testfolder2").set('movieChoices')
+    db.ref("users/" + user.uid + "/testfolder3").push('movieChoices')
+  }
+  
+
+})
+
