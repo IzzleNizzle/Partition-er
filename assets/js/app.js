@@ -25,7 +25,7 @@ var acct1Value = 100;
 var valueTotal = 0;
 
 
-
+// This happens when you click on the top submit button
 $("#accountSubmit").on("click", function () {
   //prevent anoying refresh
   event.preventDefault();
@@ -52,7 +52,8 @@ $("#accountSubmit").on("click", function () {
 // click function for Box 2 form submit
 $("#formSubmit").on("click", function () {
   //prevent anoying refresh
-  event.preventDefault();
+    event.preventDefault();
+
   //gather inputs from form
   var name = $("#name1").val().trim();
   var value = parseFloat($("#value1").val().trim());
@@ -142,13 +143,16 @@ $("#formSubmit").on("click", function () {
 });
 
 
+
+
+
+
+// **************************** USER AUTHENTICATION ********************************
+
 // Variables with user authentication
 const auth = firebase.auth();
 auth.onAuthStateChanged(firebaseUser => { });
 var logOut = document.getElementById("btnLogOut");
-
-// **************************** USER AUTHENTICATION ********************************
-
 
 // Get Elements
 var txtEmail;
@@ -210,20 +214,84 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 // **************************** END USER AUTHENTICATION ********************************
 
 
+// problem i'm currently solving for; when a page loads, user is logged in and has a past saved data, how to load it correctly.
+
+// step 1 var acct1Value needs to be stored on database and reloaded when page loads anew
+// step 2 print to html the acctValue value - $("#display-value").text("$" + acct1Value);
+// valueTotal needs to be stored on database and reloaded when page loads anew - this has to do with making sure we dont go over alloted amount
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // playing with firebase database handling
 
-$("#accountSubmit").on("click", function (){
+//$("#accountSubmit").on("click", function (){
 
-  if (user.uid === null){
-    console.log("noone is logged in to store data for");
-  } else {
+//  if (user.uid === null){
+ //   console.log("noone is logged in to store data for");
+ // } else {
     // db.ref().set('');
-    db.ref("users/" + user.uid + "/testfolder").set('movieChoices')
-    db.ref("users/" + user.uid + "/testfolder2").set('movieChoices')
-    db.ref("users/" + user.uid + "/testfolder3").push('movieChoices')
-  }
+ //   db.ref("users/" + user.uid + "/testfolder").set('movieChoices')
+  //  db.ref("users/" + user.uid + "/testfolder2").set('movieChoices')
+  //  db.ref("users/" + user.uid + "/testfolder3").push('movieChoices')
+ // }
   
 
-})
+//})
 
+// Here is the structure I'm going to use for storing the data to our warehouse
+// setting user id
+//var userId = firebase.auth().currentUser.uid;
+// set data
+//firebase.database().ref('users/' + userId).set({
+    //username: "name",
+    //email: "email",
+    //profile_picture: "imageUrl"
+//});
+
+
+// changing some data
+//var updates = {};
+//updates['/users/moGczXfHVRc6S8WvKeBRne7NN6o2/email'] = "testemail";
+//firebase.database().ref().update(updates);
+
+
+
+// listener for data
+//firebase.database().ref('/users/' + userId + '/email').on('value', function (snapshot) {
+  //  console.log(snapshot.val() + " wizard");
+//});
