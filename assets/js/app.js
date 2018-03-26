@@ -216,9 +216,16 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
 // problem i'm currently solving for; when a page loads, user is logged in and has a past saved data, how to load it correctly.
 
+
+// The next stage of development would be to take all local variables and store then instead in google's firebase so that this application will be cloud base.
+
+// List of important variables;
+
 // step 1 var acct1Value needs to be stored on database and reloaded when page loads anew
-// step 2 print to html the acctValue value - $("#display-value").text("$" + acct1Value);
+// step 2 print to html the acct1Value value - $("#display-value").text("$" + acct1Value);
 // valueTotal needs to be stored on database and reloaded when page loads anew - this has to do with making sure we dont go over alloted amount
+
+// leftValue
 
 
 
