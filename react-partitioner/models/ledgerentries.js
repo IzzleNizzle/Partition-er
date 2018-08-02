@@ -8,13 +8,15 @@ dateCreated
 ledgerEntryName
 ledgerEntryAmmount
 timeAfterPrevious
+ledgerID
 
 */
 
 const ledgerSchema = new Schema({
-  title: { type: String, required: true },
-  author: { type: String, required: true },
-  synopsis: String,
+  ledgerEntryName: String,
+  ledgerEntryAmmount: { type: Number, required: true },
+  timeAfterPrevious: Number,
+  ledgerID: { type: String, required: true },
   date: { type: Date, default: Date.now }
 });
 

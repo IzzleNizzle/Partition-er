@@ -15,10 +15,11 @@ creationDate
 
 
 const userSchema = new Schema({
-  title: { type: String, required: true },
-  author: { type: String, required: true },
-  synopsis: String,
-  date: { type: Date, default: Date.now }
+  emial: { type: String, required: true },
+  username: { type: String, required: true },
+  ledgerCount: Number,
+  ledgerArray: Array,
+  dateCreated: { type: Date, default: Date.now }
 });
 
 const User = mongoose.model("User", userSchema);
