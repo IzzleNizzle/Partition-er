@@ -5,8 +5,9 @@ const Schema = mongoose.Schema;
 Idea for mapping out the LedgerEntry model
 
 dateCreated
+ledgerEntryName
 ledgerEntryAmmount
-ledgerEntryEntries
+timeAfterPrevious
 
 */
 
