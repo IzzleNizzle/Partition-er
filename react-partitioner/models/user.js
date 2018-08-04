@@ -15,7 +15,7 @@ creationDate
 
 
 const userSchema = new Schema({
-  emial: { type: String, required: true },
+  email: { type: String, required: true },
   username: { type: String, required: true },
   ledgerCount: Number,
   ledgerArray: Array,
