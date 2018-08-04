@@ -12,7 +12,7 @@ ledgerID
 
 */
 
-const ledgerSchema = new Schema({
+const ledgerEntrySchema = new Schema({
   ledgerEntryName: String,
   ledgerEntryAmmount: { type: Number, required: true },
   timeAfterPrevious: Number,
