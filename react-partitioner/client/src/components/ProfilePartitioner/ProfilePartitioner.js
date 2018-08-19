@@ -7,7 +7,9 @@ class ProfilePartitioner extends Component {
 
   render() {
     return (
-      <div className="profile-partitioner"></div>
+      <div className="profile-partitioner">
+      {/* {props.children} */}
+      </div>
     );
   }
 }
