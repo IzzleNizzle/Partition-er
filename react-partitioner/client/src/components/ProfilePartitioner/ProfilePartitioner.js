@@ -4,11 +4,18 @@ import "./ProfilePartitioner.css"
 
 
 class ProfilePartitioner extends Component {
+  constructor(props){
+    super(props)
+
+    this.state = {
+
+    }
+  }
 
   render() {
     return (
       <div className="profile-partitioner">
-      {/* {props.children} */}
+      {this.props.children}
       </div>
     );
   }
