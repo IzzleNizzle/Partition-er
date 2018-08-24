@@ -209,10 +209,6 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
 // **************************** END USER AUTHENTICATION ********************************
 
-
-// problem i'm currently solving for; when a page loads, user is logged in and has a past saved data, how to load it correctly.
-
-
 // The next stage of development would be to take all local variables and store then instead in google's firebase so that this application will be cloud base.
 
 // List of important variables;
