@@ -49,7 +49,7 @@ class ValueVisualizer extends Component {
 
         {/* Displays value of profile */}
         <span id="display-value">$100</span>
-
+        <InnerBox />
         {/* Maps out profile boxes */}
         {
           this.props.segments.map(
@@ -57,7 +57,7 @@ class ValueVisualizer extends Component {
             <div key={index}>
             {segment.value}
             {segment.name}
-            <InnerBox />
+            {/* <InnerBox /> */}
             </div>
         )
         }

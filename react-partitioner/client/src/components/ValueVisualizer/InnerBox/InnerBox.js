@@ -1,8 +1,27 @@
-import React from "react";
-import "./InnerBox.css";
+import React, { Component } from "react";
 
-export const InnerBox = props => (
-  <button {...props} style={{ float: "right", marginBottom: 10 }} className="btn btn-success">
-    {props.children}
-  </button>
-);
+
+
+
+class InnerBox extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      divStyle: {
+        margin: 'auto',
+        border: '5px solid pink'
+      }
+    }
+  }
+
+
+
+  render() {
+    return (
+      <div style={this.state.divStyle}>
+      </div>
+    );
+  }
+}
+
+export default InnerBox;
