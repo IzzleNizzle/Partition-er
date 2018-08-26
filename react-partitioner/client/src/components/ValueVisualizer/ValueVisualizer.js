@@ -3,6 +3,7 @@ import React, { Component } from "react";
 // import Typography from '@material-ui/core/Typography';
 import API from "../../utils/API";
 import "./ValueVisualizer.css"
+import InnerBox from "./InnerBox";
 
 
 /*
@@ -56,6 +57,7 @@ class ValueVisualizer extends Component {
             <div key={index}>
             {segment.value}
             {segment.name}
+            <InnerBox />
             </div>
         )
         }
