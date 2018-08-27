@@ -74,11 +74,13 @@ class Home extends Component {
             [
               {
                 name: 'Here we go',
-                value: 50
+                value: 50,
+                color: 'blue'
               },
               {
                 name: 'Another test',
-                value: 50
+                value: 150,
+                color: 'red'
               }
             ]
 
