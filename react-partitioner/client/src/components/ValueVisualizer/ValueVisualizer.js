@@ -39,8 +39,20 @@ class ValueVisualizer extends Component {
     super(props)
 
     this.state = {
-
+      leftValue: 0
     }
+  }
+
+  updateLeftCount = () => {
+    console.log('testing');
+    
+    this.setState((prevState) => {
+      leftValue: prevState.leftValue + 1
+      // leftValue: 15
+
+    })
+
+    // this.setState({leftValue: 15})
   }
 
   render() {
@@ -50,23 +62,27 @@ class ValueVisualizer extends Component {
         {/* Displays value of profile */}
         <span id="display-value">$100</span>
 
-        {/* <InnerBox 
-        color={this.props.segments[0].color}
-        size={this.props.segments[0].value}
-        name={this.props.segments[0].name}
-        /> */}
 
         {/* Maps out profile boxes */}
         {
           this.props.segments.map(
-          (segment, index) =>
-            <InnerBox 
-              key={index}
-              color={segment.color}
-              size={segment.value}
-              name={segment.name}
-            />
-        )
+            (segment, index) => {
+
+              let innerBox = <InnerBox
+                key={index}
+                color={segment.color}
+                size={segment.value}
+                name={segment.name}
+                leftValue={this.state.leftValue}
+              />
+
+              this.updateLeftCount()
+
+              return innerBox;
+
+            }
+
+          )
         }
 
       </div>
