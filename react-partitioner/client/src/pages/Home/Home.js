@@ -78,6 +78,11 @@ class Home extends Component {
                 name: 'Another test',
                 value: 150,
                 color: 'red'
+              },
+              {
+                name: "Hi Jaime",
+                value: 100,
+                color: 'purple'
               }
             ]
 
